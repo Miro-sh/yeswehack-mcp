@@ -1,0 +1,51 @@
+{
+  "name": "yeswehack-mcp",
+  "version": "0.3.0",
+  "description": "Read-only MCP server for a YesWeHack hunter account, authenticated with credentials and TOTP.",
+  "license": "MIT",
+  "author": "Miro-sh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miro-sh/yeswehack-mcp.git"
+  },
+  "homepage": "https://github.com/Miro-sh/yeswehack-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/Miro-sh/yeswehack-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "yeswehack",
+    "bug-bounty",
+    "security"
+  ],
+  "type": "module",
+  "private": true,
+  "bin": {
+    "yeswehack-mcp": "dist/src/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "ci": "npm run check && npm test && npm run build",
+    "dev": "tsx src/index.ts",
+    "smoke": "tsx src/smoke.ts",
+    "smoke:mcp": "npm run build --silent && node dist/src/protocol-smoke.js",
+    "test": "node --import tsx --test test/*.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "dotenv": "^18.0.1",
+    "otpauth": "^9.5.2",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.0.0",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
